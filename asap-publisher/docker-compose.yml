@@ -1,0 +1,10 @@
+services:
+  asap-publisher:
+    build: .
+    image: asap-publisher:latest
+    container_name: asap-publisher
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    # Add other environment variables or dependencies if needed

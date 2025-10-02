@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-alpine
+FROM amazoncorretto:21.0.8-alpine
 LABEL authors="syedee"
 
 VOLUME /tmp

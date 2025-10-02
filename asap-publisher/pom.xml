@@ -20,7 +20,17 @@
 
     <properties>
         <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
         <docker.image.prefix>asap-publisher</docker.image.prefix>
+        <!--        AWS SDK Version-->
+        <aws.java.sdk.version>2.34.5</aws.java.sdk.version>
+
+        <!--        Maven Dependency Plugin-->
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
+
     </properties>
 
     <dependencies>
@@ -34,11 +44,34 @@
             <scope>test</scope>
         </dependency>
         <!-- Add other dependencies as needed -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--        Amazon AWS SDKs-->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sqs</artifactId>
+            <version>${aws.java.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sns</artifactId>
+            <version>${aws.java.sdk.version}</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>asap-publisher</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

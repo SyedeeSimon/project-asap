@@ -1,4 +1,4 @@
-package com.asap.publisher.model;
+package com.asap.publisher.service.pubsub.model;
 
 public class Payload {
     private String message;
